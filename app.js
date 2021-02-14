@@ -33,7 +33,7 @@ const getImages = (query) => {
   fetch(`https://pixabay.com/api/?key=${KEY}=${query}&image_type=photo&pretty=true`)
     .then(response => response.json())
     .then(data => showImages(data.hits))
-    .catch(err => console.log(err))
+    .catch(err => displayError('Something Went Wrong !! Please Try Again Later'))
 }
 
 let slideIndex = 0;
@@ -78,6 +78,7 @@ const createSlider = () => {
       alt="">`;
       sliderContainer.appendChild(item)
     })
+
     changeSlide(0)
     timer = setInterval(function () {
       slideIndex++;
@@ -131,9 +132,18 @@ document.getElementById("search").addEventListener("keypress", function (event) 
   }
 });
 
-// Extra Part
+// Extra Feature
+// Improvement-1
 // Adding Spinner Function 
 const toggleSpinner = () => {
   const spinner = document.getElementById('spinner');
   spinner.classList.toggle('d-none')
+}
+
+
+// Improvement-2
+// Display Server Error Message
+const displayError = error => {
+  const errorMessage = document.getElementById('error-message');
+  errorMessage.innerText = error;
 }
