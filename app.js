@@ -45,9 +45,8 @@ const selectItem = (event, img) => {
     sliders.push(img);
   }
   else{
-    sliders.filter(item => item !== element);
+    sliders = sliders.filter(item => item.indexOf(img));
   }
-  console.log(sliders);
 }
 var timer
 const createSlider = () => {
@@ -136,5 +135,5 @@ document.getElementById("search").addEventListener("keypress", function (event) 
 // Adding Spinner Function 
 const toggleSpinner = () => {
   const spinner = document.getElementById('spinner');
-  spinner.classList.toggle('invisible')
+  spinner.classList.toggle('d-none')
 }
